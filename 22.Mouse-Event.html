@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse event</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <button class="btn btn-primary">
+        button
+    </button>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        console.log('hello!');
+        // 程式讀到第35行，就會直接執行一次，且無法再呼叫
+        // 如果想重複執行，要包在function裡
+
+
+        $('.btn').click(function () {
+            console.log('click');
+        });
+        $('.btn').dblclick(function () {
+            console.log('dbclick1');
+        });
+        // 注意 : 雙擊 除了會觸發 '一次dbclick', 也同時會觸發 '兩次click'
+
+
+
+        // 綁定監聽器的機制，以下 : 
+        $('.btn').dblclick(function () {
+            console.log('dbclick2');
+
+            // 還未執行dblclick事件的function之前，不會綁定這個事件
+            // 直到使用者先對button做了dblclick之後，才會綁定
+            $('.btn').contextmenu(function () {
+                console.log('contextmenu');
+            })
+        });
+
+
+        // 注意 : 兩者的差異
+        // ex 點選時因猶豫而長按，最後移到別處才放開左鍵
+        $('.btn').mousedown(function () {
+            console.log('mousedown');
+        });
+        $('.btn').mouseup(function () {
+            console.log('mouseup');
+        });
+
+
+        // 滑鼠移進選擇器
+        $('.btn').mouseenter(function () {
+            console.log('mouseenter');
+        });
+        // 滑鼠移出選擇器
+        $('.btn').mouseleave(function () {
+            console.log('mouseleave');
+
+
+
+            // hover : 滑入滑出都會回傳事件
+        }); $('.btn').hover(function () {
+            console.log('hover');
+        });
+
+        // 將 hover 偵測滑入、偵測滑出 分開可寫成 以下:
+        $('.btn').hover(function () {
+            console.log('hover in');
+        }, function () {
+            console.log('hover leave');
+        });
+
+
+        // coding style
+        // airbnb 推崇不加分號當結尾
+    </script>
+</body>
+
+</html>
