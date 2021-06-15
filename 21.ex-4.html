@@ -9,27 +9,84 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
-
+        body {
+            font-weight: 500;
+        }
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <div class="row">
+            <form>
+                <div class="form-group">
+                    <label for="inputUsername1">Username</label>
+                    <input type="text" class="form-control" id="inputUsername1" placeholder="Username">
+                    <!-- input的所有資訊都在屬性(attribute)裡面 -->
+                    <!-- value 屬性，為input填入內容 -->
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword1">Password</label>
+                    <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me to see password</label>
+                </div>
+                <button type="button" class="autoInput btn btn-info">auto input</button>
+                <button type="submit" class="submit btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
 
-
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
+        // 新增一個click事件監聽器
+        $('.autoInput').click(function () {
+            // function裡面會自帶一個內建的Event參數 代表這個事件
+            console.log(event);
+            // 將Event印出看看
+            $('#inputUsername1').val('John');
+            $('#inputEmail1').val('John@gmail.com');
+            $('#inputPassword1').val('Johnn');
+        });
 
+        // submit : 會送出表單內容，
+        // 若沒有傳送的地方會傳給自己，等於是reload (網址最後多一個問號)
+        $('.submit').click(function () {
+            event.preventDefault();
+            // preventDefault : 不送出，自己用ajax送表單內容給伺服器
+            console.log('hi submit');
+
+        });
+
+        // 勾選顯示密碼
+        // $('#exampleCheck1').click(function () {
+        //     if ($(this).prop("checked")) {
+        //         $('#inputPassword1').attr('type', 'text')
+        //     }
+        //     else {
+        //         $('#inputPassword1').attr('type', 'password')
+        //     }
+        // })
+
+        // 改為按住顯示密碼，放開隱藏密碼
+        $('#exampleCheck1').mousedown(function () {
+            $('#inputPassword1').attr('type', 'text')
+        }),
+            $('#exampleCheck1').mouseup(function () {
+                $('#inputPassword1').attr('type', 'password')
+            });
     </script>
+
 </body>
 
 </html>

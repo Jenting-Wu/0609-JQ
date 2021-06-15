@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+
+<body>
+
+    <script>
+        const myArray = ["第零個資料", "第一個資料", "第二個資料", "第三個資料", "第四個資料"];
+        console.log('myArray:', myArray);
+        console.log('myArray-2:', myArray[2]);
+
+        const districtArray = [
+            ['七堵', '中正', '暖暖'],
+            ['中正', '大安', '信義'],
+            ['蘆洲', '三重', '新店'],
+        ];
+
+        // 二維陣列
+        console.log('districtArray:', districtArray);
+        console.log('districtArray-0-0:', districtArray[0][0]);
+        console.log('districtArray-1:', districtArray[1]);
+        console.log('districtArray-2:', districtArray[2]);
+
+        // 關於陣列js有很多方法可以使用
+        // 通常是為了處理陣列裡的每一筆資料
+        // forEach, map, filter
+
+        // forEach : 針對陣列跑迴圈，把裡面的資料一筆一筆拿出來使用
+        // 迴圈 : 資料有幾筆，就會執行幾次 function
+        // element : 即 每次迴圈拿的一筆資料，每次都拿不同資料，直到拿完為止
+        // 以districtArray為例，迴圈執行3次，總共拿3次 element
+        districtArray.forEach(function (element) {
+            console.log('elment:', element);
+
+            element.forEach(function (item) {
+                console.log('item:', item);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

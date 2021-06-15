@@ -18,9 +18,8 @@
         // 呼叫
         abc();
 
-        // 匿名函式
-        // 可節省記憶體
-        // 通常用在: 只執行一次，且立即執行(後面帶小括號)
+        // 匿名函式 (節省記憶體)
+        // 常用於: 只執行一次，且立即執行(後面帶小括號)
         (function () {
             console.log('abc');
         })();
@@ -70,8 +69,12 @@
         console.log(result2);
         console.log(result1 + result2);
 
-        // ES6 箭頭函式
+
+
+        // ES6 箭頭函式，用()=> 來表示 function
         // JQuery不接受箭頭函式的寫法
+
+        // --------------- example ---------------
         function normalFunc1() {
             console.log('normalFunc1');
         };
@@ -85,20 +88,31 @@
         };
         arrowFunc();
 
+
+        // --------------- example ---------------
         // 箭頭函式的return，如果只有一行，可以省略return和大括號
         const myAdd = (a, b) => a + b;
+
+        // 原式為 : 
+        const myAdd2 = function (a, b) {
+            return (a + b);
+        };
 
         const myResult3 = myAdd(10, 3);
         console.log(myResult3);
 
 
 
+        // --------------- example ---------------
+        // 只有一個參數，可省略小括號，如下 :
         const logMyString = str => console.log('str:', str);
-
-        // 只有一個參數，可以省略成以下:
         logMyString(123);
 
-
+        // 原式為 : 
+        // const logMyString = function (str) {
+        //     console.log('str:', str);
+        // };
+        // logMyString(123);
     </script>
 
 </body>
