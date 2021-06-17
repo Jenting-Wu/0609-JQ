@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        // Object物件
+        // Key:value 組合而成的一組資料
+        // 陣列 是有順序的資料，取得資料的方式 array[0]
+        // 物件 是沒有順序的資料，靠key判斷取哪一筆資料
+        const myObj = {
+            name: "John",
+            email: "John@gamil.com",
+            age: "28",
+            mobile: "0912345678",
+            class: ['HTML', 'CSS', 'jQuery'],
+            sayhi: function () {
+                console.log('sayHi');
+            }
+        };
+
+        // 點表示法 : 
+        console.log('name', myObj.name);
+        console.log('email', myObj.email);
+
+        // 中括號表示法 : 
+        console.log('age', myObj['age']);
+        console.log('mobile', myObj['mobile']);
+        console.log('class', myObj['class']);
+
+        myObj.sayhi();
+
+
+
+        const newObj = {
+            name: "John",
+            email: "John@gamil.com",
+            age: "28",
+            mobile: "0912345678",
+            members: [{
+                name: "May",
+                email: "May@gamil.com",
+                age: "21",
+                mobile: "0911111111",
+                class: ['HTML1', 'CSS1', 'jQuery1']
+            }, {
+                name: "Johnny",
+                email: "Johnny@gamil.com",
+                age: "22",
+                mobile: "0912222222",
+                class: ['HTML2', 'CSS2', 'jQuery2']
+            }, {
+                name: "Jojo",
+                email: "Jojo@gamil.com",
+                age: "23",
+                mobile: "0912333333",
+                class: ['HTML3', 'CSS3', 'jQuery3']
+            }],
+
+        };
+
+        console.log('class', newObj.members[0].class[2]);
+    </script>
+</body>
+
+</html>

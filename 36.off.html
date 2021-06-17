@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Off</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="btnHi" class="btn btn-info">hi</button>
+    <button id="btnOn" class="btn btn-info">on</button>
+    <button id="btnOff" class="btn btn-info">off</button>
+    <button id="btnOne" class="btn btn-info">one</button>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        // 解除綁定 和 動態綁定 必須是同一個id
+
+        const sayHi = function () {
+            console.log('hi');
+        };
+        // 綁定
+        $('#btnOn').click(function () {
+            console.log('#on clicked');
+            // $('#btnHi').click(sayHi); 是一樣的
+            $('#btnHi').on('click', sayHi);
+        });
+        // *注意 : 按幾次就會綁定幾次，而綁定幾次就會執行幾次
+
+        // 解除
+        $('#btnOff').click(function () {
+            console.log('#off clicked');
+            $('#btnHi').off('click', sayHi);
+        });
+
+        // 只能綁定一次，解除後也無法再重新綁定
+        $(function () {
+            console.log('#one clicked');
+            $('#btnHi').one('click', sayHi);
+        });
+
+
+
+    </script>
+</body>
+
+</html>

@@ -35,6 +35,7 @@
         // 迴圈 : 資料有幾筆，就會執行幾次 function
         // element : 即 每次迴圈拿的一筆資料，每次都拿不同資料，直到拿完為止
         // 以districtArray為例，迴圈執行3次，總共拿3次 element
+
         districtArray.forEach(function (element) {
             console.log('elment:', element);
 
@@ -42,6 +43,62 @@
                 console.log('item:', item);
             });
         });
+
+
+        // 最基礎的迴圈(for...loop)
+        for (var i = 0; i < 3; i++) {
+            console.log('i:', districtArray[i]);
+            for (var j = 0; j < 3; j++) {
+                console.log('j:', districtArray[i][j]);
+            };
+            // 不能這麼寫 console.log('i:', districtArray[i][i]);
+            // i會被取代掉
+        };
+
+        // 當知道要跑的次數 =全部的資料個數有幾筆
+        // 設定條件時，會改成[陣列的長度](array.length)
+        for (var i = 0; i < districtArray.length; i++) {
+            console.log('i:', districtArray[i]);
+            for (var j = 0; j < districtArray[i].length; j++) {
+                console.log('j:', districtArray[i][j]);
+            };
+        };
+
+        // 非同步的概念
+        // Js是單執行序，如果中間被阻擋了(等很久/Error)，後面就不會再執行
+        // 執行順序很重要 !
+        // 在需要等待時，為了不阻礙執行流程，會把這件事交給瀏覽器提供的API
+        // 常見的就是 : SetTimeout, SetInterval, Ajax
+        // SetTimeout 秒數不是絕對準確，只能說最少等幾秒後才會執行，可能會超過
+        // 如果主線程執行時間超過setTimeout的秒數，必須先等主線程執行完才可執行
+
+        setTimeout(() => {
+            console.log('hihihi, ');
+        }, 3000);
+        // 等3秒後執行
+
+
+        // setTimeout 結合 for迴圈
+        for (var i = 0; i < 3; i++) {
+            setTimeout(() => {
+                console.log('i:', i);
+            }, 3000);
+        };
+        // setTimeout是API，等主線程(for迴圈)跑完才執行，結果會印出三個'3'
+        // 解決方法 : ES5 使用閉包的概念處理變數問題
+        //           閉包 : 創建一個封閉環境，裡面的變數會被鎖定在當時的數值
+        // 解決方法 : ES6 直接改變宣告方為 let 如下:
+
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                console.log('i:', i);
+            }, 3000);
+        };
+
+        // 透過 Js 呼叫 BOM 和 DOM 提供的 API ，來控制瀏覽器的行為和網頁內容
+        // API : Application Programming Interface 應用程式介面
+        // BOM : Browser Object Model 瀏覽器物件模型
+        // DOM : Document Object Model 文件物件模型
     </script>
 
 </body>
