@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Push</title>
+</head>
+
+<body>
+
+    <script>
+
+        const myArray = [1, 2, 3];
+
+
+        // 這是錯誤寫法，因為 const 宣告的變數不能重新賦值
+        // myArray = [1, 2, 3, 4];
+
+        console.log('myArray-1:', myArray);
+
+        // ---------- 陣列 4 個使用方法 ----------
+
+        // 1. array.push : 將元素添加至 陣列'最後'
+        myArray.push(4);
+
+        console.log('myArray-2:', myArray);
+
+        // 2. array.pop : 取走最後一個元素
+        // 且可用變數承接取走的值
+        const myPop1 = myArray.pop();
+        console.log('myArrayPop1:', myArray);
+        console.log('myPop-1:', myPop1);
+
+        const myPop2 = myArray.pop();
+        console.log('myArrayPop2:', myArray);
+        console.log('myPop-2:', myPop2);
+
+        const myPop3 = myArray.pop();
+        console.log('myArrayPop3:', myArray);
+        console.log('myPop-3:', myPop3);
+
+        // 3. array.unshift : 將元素添加至 陣列'最前'
+        myArray.unshift(0);
+        console.log('unshift:', myArray);
+
+        myArray.unshift(-1);
+        console.log('unshift:', myArray);
+
+        myArray.unshift(-2);
+        console.log('unshift:', myArray);
+
+
+        // 4. array.shift : 取走第一個元素
+        // 且可用變數承接取走的值
+        const myShift1 = myArray.shift();
+        console.log('shift:', myArray);
+        console.log('myShift1:', myShift1);
+
+        const myShift2 = myArray.shift();
+        console.log('shift:', myArray);
+        console.log('myShift2:', myShift2);
+
+
+    </script>
+</body>
+
+</html>

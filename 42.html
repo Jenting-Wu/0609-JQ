@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .wrap {
+            width: 500px;
+            height: 400px;
+            margin: 50px auto;
+            background-color: black;
+            transition: .5s;
+        }
+
+        .button-group {
+            margin: 10px auto 10px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightyellow;
+            margin-top: 10px;
+            transition: .5s;
+            margin: 10px auto 10px;
+            border-radius: 50%;
+        }
+
+        /* .box[中間沒有空格].active */
+        .box.active {
+            background-color: transparent;
+            background-image: radial-gradient(circle, yellow, red);
+
+        }
+
+        .wrap.active {
+            background-color: skyblue;
+        }
+
+        /* .btn.active {
+            background-color: skyblue;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="wrap d-flex flex-column justify-content-center">
+        <div class="button-group">
+            <button id="addClass" class="btn btn-light">Good Morning!</button>
+            <button id="removeClass" class="btn btn-dark">Good Night!</button>
+            <button id="toggleClass" class="btn btn-info">Toggle Class!</button>
+        </div>
+
+        <div class="box"></div>
+
+        <div class="button-group">
+            <button id="hasClass" class="btn btn-info">Has Class!</button>
+            <!-- <button id="removeClass" class="btn btn-info">Remove Class!</button>
+            <button id="toggleClass" class="btn btn-info">Toggle Class!</button> -->
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $('#addClass').click(function () {
+            $('.box').addClass('active');
+
+            // 以下錯誤打法﹑注意不要打.active !!
+            // $('.box').addClass('.active');
+        });
+
+        $('#removeClass').click(function () {
+            $('.box').removeClass('active');
+        });
+
+        $('#toggleClass').click(function () {
+            $('.box').toggleClass('active');
+        });
+
+        $('#hasClass').click(function () {
+            console.log('hasClass:', $('.box').hasClass('active'));
+
+            if ($('.box').hasClass('active')) {
+                $('.box').removeClass('active');
+            }
+            else {
+                $('.box').addClass('active');
+            };
+
+            if ($('.wrap').hasClass('active')) {
+                $('.wrap').removeClass('active');
+            }
+            else {
+                $('.wrap').addClass('active');
+            };
+
+
+            // if ($('.btn').hasClass('active')) {
+            //     $('.btn').removeClass('active');
+            // }
+            // else {
+            //     $('.btn').addClass('active');
+            // };
+        });
+
+    </script>
+
+</body>
+
+</html>

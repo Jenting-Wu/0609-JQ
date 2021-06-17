@@ -27,32 +27,50 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
-        // on 綁定動態產生之物件
+        // 說明  getElement 與 querySelector 的差異
+        // 1. 資料型態不一樣，一個是 htmlCollection 一個是NodeList
+        // 2. 動態後來才新增的節點，htmlCollection 會變動，NodeList 只會停在選取時的狀態
+        const htmlCollection = document.getElementsByTagName("li");
+        const querySelector = document.querySelectorAll("li");
+
+        // 在js的原生寫法
+        // 多個物件必須自己跑迴圈
+        for (let i = 0; i < htmlCollection.length; i++) {
+            console.log('i:', htmlCollection[i]);
+            htmlCollection[i].addEventListener('click', function () {
+            }, false);
+        };
 
 
-        // $('#clickMe').click(function () {
-        //     console.log('hi click');
-        // });
+        // 在jq的寫法，簡短很多
+        $('li').click(function () {
+            console.log('hi');
+        });
 
+
+        // --------------- on click ---------------
+        // 詳見32
         let itemIndex = 3;
 
         $('#clickMe').on('click', function () {
-            // console.log('hi on click');
             $('ul').append(`<li>item ${itemIndex}</li>`);
             itemIndex++
-            // itemIndex++ 即為 itemIndex = itemIndex + 1
         });
 
-        // click的綁定方法，無法綁定動態產生的物件
         $('li').click(function () {
             console.log('click item');
         });
 
-        // 在直系長輩找一個已存在的節點，往下 find 'li'，動態綁定 click事件
         $('ul').on('click', 'li', function () {
             console.log('hi on click item');
         });
+        // --------------- on click ---------------
 
+
+        $('#checkout').click(function () {
+            console.log('htmlCollection:', htmlCollection);
+            console.log('uerySelector:', querySelector);
+        });
     </script>
 </body>
 

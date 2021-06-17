@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .btnSmall {
+            font-size: 8px;
+            color: black;
+        }
+
+        .btnMedium {
+            font-size: 16px;
+            color: blueviolet;
+        }
+
+        .btnLarge {
+            font-size: 32px;
+            color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-end">
+            <div class="button-group">
+                <button class="btn btn-info btnS">S</button>
+                <button class="btn btn-info btnM active">M</button>
+                <!-- bootstrap 預設 hover -->
+                <button class="btn btn-info btnL">L</button>
+            </div>
+        </div>
+
+        <h2>jQuery</h2>
+        <p class="btnMedium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolore, ut dolorem tenetur
+            fugiat obcaecati
+            cupiditate qui eos eligendi deserunt amet doloribus minima maxime perspiciatis officiis porro nesciunt
+            architecto veritatis?</p>
+        <p class="btnMedium">Repellendus provident hic repudiandae! Repudiandae, aliquam. Amet, quisquam dolorem at
+            dolorum laborum
+            obcaecati qui, corporis consequatur unde, quo officia. Quaerat magni suscipit laudantium ratione recusandae
+            veniam dicta. Distinctio, suscipit facere!</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+
+        // 方法一 : 每個 button 分開寫
+        $('.btnS').click(function () {
+            // 改 button 的顯示狀態，提醒使用者目前選取的狀態
+            $('.btnS').addClass('active').siblings().removeClass('active');
+
+            // ------ 寫法一 ------
+            // $('p').addClass('btnSmall').removeClass('btnMedium').removeClass('btnLarge');
+
+
+            // ------ 寫法二 ------
+            $('p').removeClass().addClass('btnSmall');
+            // removeClass() 小括號空白 : 全部移除
+            // 注意 addClass 要寫在後面，才不會一起被 remove 掉
+
+        })
+
+        $('.btnM').click(function () {
+            $('.btnM').addClass('active').siblings().removeClass('active');
+
+            $('p').addClass('btnMedium').removeClass('btnSmall').removeClass('btnLarge');
+        })
+
+        $('.btnL').click(function () {
+            $('.btnM').removeClass('active').siblings().removeClass('active');
+
+            $('p').addClass('btnLarge').removeClass('btnSmall').removeClass('btnMedium');
+        })
+
+
+        // 方法二 : 寫判斷式，用 index 或 .text()
+        // $('.btn').click(function () {
+        //     console.log('this:', $(this).is(":contains('S')"));
+        //     // 寫法二 : 
+        //     // console.log('this:', this == $(".btn:contains('S')")[0]);
+
+
+        //     if ($(this).is(":contains('S')")) {
+        //         $('p').removeClass().addClass('btnSmall');
+        //         $('btn').removeClass('active');
+        //         $(this).addClass('active');
+        //     };
+        //     if ($(this).is(":contains('M')")) {
+        //         $('p').removeClass().addClass('btnMedium');
+        //         $('btn').removeClass('active');
+        //         $(this).addClass('active');
+        //     };
+
+        //     if ($(this).is(":contains('L')")) {
+        //         $('p').removeClass().addClass('btnLarge');
+        //         $('btn').removeClass('active');
+        //         $(this).addClass('active');
+        //     };
+
+        // });
+    </script>
+</body>
+
+</html>
